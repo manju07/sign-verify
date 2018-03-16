@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" ng-app="app" ng-controller="signVerify">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>verify-Page</title>
+
+	<link rel="stylesheet" type="text/css" href="stylesheets/util.css">
+	<link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- Include script files -->
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script type="text/javascript" src="javascripts/app.js"></script>
+	<script type="text/javascript" src="javascripts/signverify.js"></script>
+
+</head>
+
+<body>
+	<div class="container-contact100" style="background-image: url('images/bg-01.jpg');">
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form">
+				<span class="contact100-form-title">
+					<center>verify - Page</center>
+				</span>
+
+				<div class="wrap-input100 validate-input" data-validate="Message is required">
+					<textarea class="input100" rows="2" cols="100" ng-model="message" name="message" placeholder="Enter message here..."></textarea>
+				</div>
+
+				<div class="wrap-input100 validate-input">
+					<textarea class="input100" rows="2" cols="100" ng-model="sign"  name="sign" placeholder="Enter Sign key..."></textarea>
+				</div>
+				<div style="display: block; margin: 0 auto;">
+					<input type="submit" class="btn btn-danger btn-lg" name="sign" value="Verify Sign" ng-click="verifyData();">
+				</div>
+				<br>
+				<br>
+				<br>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>
