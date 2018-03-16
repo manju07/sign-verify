@@ -25,18 +25,20 @@
 				</span>
 
 				<div class="wrap-input100 validate-input" data-validate="Message is required">
-					<textarea class="input100" rows="2" cols="100" ng-model="message" name="message" placeholder="Enter message here..."></textarea>
-				</div>
+					<textarea class="input100" rows="2" cols="100" ng-model="message" name="message" placeholder="Enter Message here..."></textarea>
+				</div>	
 
-				<div class="wrap-input100 validate-input">
-					<textarea class="input100" rows="2" cols="100" ng-model="sign"  name="sign" placeholder="Enter Sign key..."></textarea>
+				<div class="wrap-input100 validate-input" >
+					<textarea class="input100" rows="2" cols="100" ng-model="sign"  name="sign" placeholder="Enter Sign key here..."></textarea>
 				</div>
 				<div style="display: block; margin: 0 auto;">
 					<input type="submit" class="btn btn-danger btn-lg" name="sign" value="Verify Sign" ng-click="verifyData();">
 				</div>
-				<br>
-				<br>
-				<br>
+				
+				<div class="wrap-input100 validate-input" style="text-align:left;font-size:20px;color:black;">
+						Verify Status:<b style="color:blueviolet;"> {{verifyStatus}}</b>
+				</div>
+
 			</form>
 		</div>
 	</div>

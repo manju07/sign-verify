@@ -1,34 +1,29 @@
-var NodeRSA = require('node-rsa');
-var key = new NodeRSA({b: 512});
- 
+const NodeRSA = require('node-rsa');
+const key = new NodeRSA({b: 512});
 
-var objData={};
 
 let webCtrl = function () {
 
     /**
      * Signed the message
+     * @returns signature
      */
     this.sign = function (req, res) {
 
-        var text = 'Hello RSA!';
-        var encrypted = key.encrypt(text, 'base64');
-        console.log('encrypted: ', encrypted);
-        var decrypted = key.decrypt(encrypted, 'utf8');
-        console.log('decrypted: ', decrypted);
-
-
-        console.log(req.body.message);
-        res.send({"message":"Hi hello1"});
+        let sign = key.sign(req.body.message, 'base64');
+        res.send({"sign":sign});
         res.end();
 
     };
+
      /**
      * verify the signed message
+     * @param message,sign value
+     * @returns true/false
      */
     this.verify = function (req, res) {
-
-        res.send({"message":"Hi hello2"});
+        let verify = key.verify(req.body.message,req.body.sign,'utf8', 'base64');
+        res.send({"response":verify});
         res.end();
     }
 }
