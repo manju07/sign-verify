@@ -1,6 +1,9 @@
-const NodeRSA = require('node-rsa');
-const key = new NodeRSA({b: 512});
+const sshpk = require('sshpk');
+const fs = require('fs');
 
+var data = 'some data';
+
+var signature;
 
 let webCtrl = function () {
 
@@ -10,20 +13,42 @@ let webCtrl = function () {
      */
     this.sign = function (req, res) {
 
-        let sign = key.sign(req.body.message, 'base64');
-        res.send({"sign":sign});
+        /* Read in an OpenSSH/PEM *private* key */
+        let keyPriv = fs.readFileSync('C:/Users/M/.ssh/id_rsa');
+        let key = sshpk.parsePrivateKey(keyPriv, 'pem');
+
+
+        /* Sign some data with the key */
+        let s = key.createSign('sha1');
+        s.update(req.body.message);
+        signature = s.sign();
+
+        res.send({
+            "sign": signature.toString()
+        });
         res.end();
 
     };
 
-     /**
+    /**
      * verify the signed message
      * @param message,sign value
      * @returns true/false
      */
     this.verify = function (req, res) {
-        let verify = key.verify(req.body.message,req.body.sign,'utf8', 'base64');
-        res.send({"response":verify});
+
+        /* Now load the public key*/
+        let keyPub = fs.readFileSync('C:/Users/M/.ssh/id_rsa.pub');
+        let key = sshpk.parseKey(keyPub, 'ssh');
+
+
+        /* Make a crypto.Verifier with this key */
+        let v = key.createVerify('sha1');
+        v.update(req.body.message);
+                
+        res.send({
+            "response": v.verify(signature)
+        });
         res.end();
     }
 }
