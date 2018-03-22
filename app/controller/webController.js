@@ -1,8 +1,6 @@
 const sshpk = require('sshpk');
 const fs = require('fs');
 
-var data = 'some data';
-
 var signature;
 
 let webCtrl = function () {
