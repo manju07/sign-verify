@@ -1,5 +1,5 @@
 # sign-verify
-Sign and verify the information with SSH public and private keys. signing data using private key and verifying data with public key. 
+Sign and verify the data with SSH public and private keys. signing data using private key and verifying data with public key. 
 
 ### Steps for running this Application.
 
