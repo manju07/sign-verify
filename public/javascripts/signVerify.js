@@ -13,12 +13,13 @@ app.controller('signVerify', ['$scope', '$http', function ($scope, $http) {
 
     $http({
       method: 'POST',
-      url: __appurl + "/sign",
+      url: "/sign",
       data: {"message":$scope.message},
       headers: { 'Content-Type': 'application/json' }
     }).then(function (success) {
       console.log("success" + JSON.stringify(success));
       $scope.sign=success.data.sign;
+      $scope.prodId=success.data.prodId;
     }, function (error) {
       console.log("error" + JSON.stringify(error));
     });
@@ -31,19 +32,13 @@ app.controller('signVerify', ['$scope', '$http', function ($scope, $http) {
     console.log("sign:-"+$scope.sign);
     $http({
       method: 'POST',
-      url: __appurl + "/verify",
+      url: "/verify",
       data: {"message":$scope.message,"sign":$scope.sign},
       headers: { 'Content-Type': 'application/json' }
     }).then(function (success) {
-      console.log("success:" + JSON.stringify(success));
-      console.log("success.data.response"+success.data.response);
-      if(success.data.response==true)
-      {
-        $scope.verifyStatus="Matched";
-      }
-      else{
-        $scope.verifyStatus="doesn't Match";
-      }
+      console.log("success: " + JSON.stringify(success));
+      console.log("success.data.response: " + success.data.response);
+      $scope.verifyStatus = success.data.response == true ? "Matched" : "doesn't Match";
     }, function (error) {
       console.log("error:" + error);
     });
