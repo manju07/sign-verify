@@ -1,14 +1,9 @@
 # sign-verify
-Sign and verify the data with SSH public and private keys. signing data using private key and verifying data with public key. 
+Sign and Verify data using ssh public and private keys. 
 
-### Steps for running this Application.
-
-1. First you need to install all node packages by ruuning command "npm install".
-    
-2. Then start application using command "npm run start".
-
-3. Now application will be running on URL - http://localhost:3000 
-
-4. View sign page by openning URL - http://localhost:3000/sign
-
-5. View verify page by openning URL - http://localhost:3000/verify
+### Steps to start the Application.
+* Need to install all node packages by running command "npm install".   
+* Then start application with command "npm run start".
+* Now application will be running on this URL - http://localhost:3000 
+* You can see sign page by openning this URL - http://localhost:3000/sign
+* and You can see verify page by openning this URL - http://localhost:3000/verify
